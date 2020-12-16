@@ -1,32 +1,56 @@
-<table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col" class="text-capitalize" style="font-size: 18px;">endpoint</th>
-        <th scope="col" class="text-capitalize" style="font-size: 18px;">metodo</th>
-        <th scope="col" class="text-capitalize" style="font-size: 18px;">seguridad</th>
-        <th scope="col" class="text-capitalize" style="font-size: 18px;"></th>
-        <th scope="col" class="text-capitalize" style="font-size: 18px;"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">
-            <input type="text">
-        </th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-      </tr>
-    </tbody>
-  </table> 
+<!-- Editable table -->
+<div class="card">
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">endpoints table</h3>
+  <div class="card-body">
+    <div id="table" class="table-editable">
+      <div class="float-end px-1">
+       <button (click)="add()" class="btn btn-danger text-light">ADD</button>   
+      </div>
+      <table class="table table-responsive-md table-striped text-center">
+        <tr>
+          <th class="text-center">EndPoint</th>
+          <th class="text-center">Metodo</th>
+          <th class="text-center">Seguridad</th>
+          <th class="text-center">Tabla-EndPoints</th>
+          <th class="text-center">Accion</th>
+        </tr>
+        <tr *ngFor="let person of personList; let id = index">
+          <td>
+            <span (keyup)="changeValue(id, 'name', $event)" (blur)="updateList(id, 'name', $event)" contenteditable="true">{{person.name}}</span>
+          </td>
+          <td>
+            <span contenteditable="true" (keyup)="changeValue(id, 'age', $event)" (blur)="updateList(id, 'age', $event)">{{person.age}}</span>
+          </td>
+          <td>
+            <span contenteditable="true" (keyup)="changeValue(id, 'companyName', $event)" (blur)="updateList(id, 'companyName', $event)">{{person.companyName}}</span>
+          </td>
+          <td>
+            <span contenteditable="true" (keyup)="changeValue(id, 'country', $event)" (blur)="updateList(id, 'country', $event)">{{person.country}}</span>
+          </td>
+          <!-- <td>
+            <span contenteditable="true" (keyup)="changeValue(id, 'city', $event)" (blur)="updateList(id, 'city', $event)">{{person.city}}</span>
+          </td> -->
+          <!-- <td>
+            <span class="table-up">
+              <a class="indigo-text">
+                <mdb-icon fas icon="long-arrow-alt-up"></mdb-icon>
+              </a>
+            </span>
+            <span class="table-down">
+              <a class="indigo-text">
+                <mdb-icon fas icon="long-arrow-alt-down"></mdb-icon>
+              </a>
+            </span>
+          </td> -->
+          <td>
+            <span class="table-remove">
+              <button class="btn btn-danger m-1" type="button" rounded="true" size="sm" (click)="remove(id)">Remove</button>
+              <button class="btn btn-outline-danger">+</button>
+            </span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- Editable table -->
